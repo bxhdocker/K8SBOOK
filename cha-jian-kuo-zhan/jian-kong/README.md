@@ -280,4 +280,5 @@ kubectl -n weave get service weave-scope-app
 ### 参考文档
 
 * [Kubernetes Heapster](https://github.com/kubernetes/heapster)
+* [https://yasongxu.gitbook.io/container-monitor/jian-jie/intro](https://yasongxu.gitbook.io/container-monitor/jian-jie/intro)
 

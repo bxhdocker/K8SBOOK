@@ -738,9 +738,13 @@ nsq大部分情况基本能满足我们作为消息队列的要求,而且性能�
 
 
 
-文档介绍
+## 参考文档
 
 极客学院 [nsq指南](http://wiki.jikexueyuan.com/project/nsq-guide/design.html)
+
+[NSQ消息发送机制](https://blog.csdn.net/u013735511/article/details/82555419)
+
+
 
 
 
