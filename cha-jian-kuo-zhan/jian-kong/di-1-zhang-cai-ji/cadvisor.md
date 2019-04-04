@@ -4,16 +4,29 @@
 
 为了解决docker stats的问题\(存储、展示\)，谷歌开源的cadvisor诞生了，cadvisor不仅可以搜集一台机器上所有运行的容器信息，还提供基础查询界面和http接口，方便其他组件如Prometheus进行数据抓取，或者cadvisor + influxdb + grafna搭配使用。
 
+cAdvisor是一个开源的容器资源使用收集器。它是专门为容器构建的，原生支持Docker容器。与在Pod级别运行的Kubernetes中的大多数元素不同，cAdvisor在每个node节点上运行。它会自动发现给定node节点中的所有容器，并收集CPU，内存，文件系统和网络使用统计信息。cAdvisor还通过分析机器上的“root”容器来提供整体机器使用情况。
+
+**优点**：
+
 cAdvisor可以对节点机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况
 
 Cadvisor使用Go语言开发，利用Linux的cgroups获取容器的资源使用信息，在K8S中集成在Kubelet里作为默认启动项，官方标配。
+
+**缺点限制性：**
+
+不过，cAdvisor两个方面有限制性：它只能收集一些基本的资源利用信息——cAdvisor不能够告诉你应用程序的真实性能，它只能告诉你一个容器使用了X% CPU信息。
+
+cAdvisor自身没有提供任何长期存储、趋势或者分析功能
+
+**cAdvisor github地址**：[https://github.com/google/cadvisor](https://github.com/google/cadvisor)
 
 ## 安装 <a id="an-zhuang"></a>
 
 * 1.使用二进制部署
 
 ```text
-下载二进制：https://github.com/google/cadvisor/releases/latest本地运行：./cadvisor  -port=8080 &>>/var/log/cadvisor.log
+下载二进制：https://github.com/google/cadvisor/releases/latest
+本地运行：./cadvisor  -port=8080 &>>/var/log/cadvisor.log
 ```
 
 * 2.使用docker部署
@@ -29,19 +42,28 @@ docker run \  --volume=/:/rootfs:ro \  --volume=/var/run:/var/run:rw \  --volume
 ![](http://www.xuyasong.com/wp-content/uploads/2019/01/205af1a97722816da7b542ac8f8e1b66.png)
 
 ```text
-* 常见指标：http://yjph83.iteye.com/blog/2394091* 指标分析：https://luoji.live/cadvisor/cadvisor-source-code-metrics-20160927.html`
+* 常见指标：http://yjph83.iteye.com/blog/2394091* 
+指标分析：https://luoji.live/cadvisor/cadvisor-source-code-metrics-20160927.html`
 ```
 
 * 3.kubernetes中使用
 
 ```text
-* Daemonset部署： https://github.com/google/cadvisor/tree/master/deploy/kubernetes* kubelet自带cadvisor监控所有节点，可以设置--cadvisor-port=8080指定端口（默认为4194）* kubernetes 在2015-03-10 这个提交（Run cAdvisor inside the Kubelet. Victor Marmol 2015/3/10 13:39）中cAdvisor开始集成在kubelet中，目前的1.6及以后均存在
+* Daemonset部署： https://github.com/google/cadvisor/tree/master/deploy/kubernetes
+* kubelet自带cadvisor监控所有节点，可以设置--cadvisor-port=8080指定端口（默认为4194）
+* kubernetes 在2015-03-10 这个提交（Run cAdvisor inside the Kubelet. Victor Marmol 2015/3/10 13:39）中cAdvisor开始集成在kubelet中，目前的1.6及以后均存在
 ```
 
 注意：
 
 ```text
-从 v1.7 开始，Kubelet metrics API 不再包含 cadvisor metrics，而是提供了一个独立的 API 接口：​* Kubelet metrics: http://127.0.0.1:8001/api/v1/proxy/nodes/<node-name>/metrics​* Cadvisor metrics: http://127.0.0.1:8001/api/v1/proxy/nodes/<node-name>/metrics/cadvisor​cadvisor 监听的端口将在 v1.12 中删除，建议所有外部工具使用 Kubelet Metrics API 替代。
+从 v1.7 开始，Kubelet metrics API 不再包含 cadvisor metrics，而是提供了一个独立的 API 接口：
+​
+* Kubelet metrics: http://127.0.0.1:8001/api/v1/proxy/nodes/<node-name>/metrics
+​
+* Cadvisor metrics: http://127.0.0.1:8001/api/v1/proxy/nodes/<node-name>/metrics/cadvisor
+​
+cadvisor 监听的端口将在 v1.12 中删除，建议所有外部工具使用 Kubelet Metrics API 替代。
 ```
 
 ## 常用搭配 <a id="chang-yong-da-pei"></a>
@@ -53,7 +75,14 @@ docker run \  --volume=/:/rootfs:ro \  --volume=/var/run:/var/run:rw \  --volume
 Heapster：在k8s集群中获取metrics和事件数据，写入InfluxDB，heapster收集的数据比cadvisor多，却全，而且存储在influxdb的也少。
 
 ```text
-Heapster将每个Node上的cAdvisor的数据进行汇总，然后导到InfluxDB。​Heapster的前提是使用cAdvisor采集每个node上主机和容器资源的使用情况，再将所有node上的数据进行聚合。​这样不仅可以看到Kubernetes集群的资源情况，还可以分别查看每个node/namespace及每个node/namespace下pod的资源情况。可以从cluster，node，pod的各个层面提供详细的资源使用情况。
+Heapster将每个Node上的cAdvisor的数据进行汇总，然后导到InfluxDB。
+​
+Heapster的前提是使用cAdvisor采集每个node上主机和容器资源的使用情况，
+再将所有node上的数据进行聚合。
+​
+这样不仅可以看到Kubernetes集群的资源情况，
+还可以分别查看每个node/namespace及每个node/namespace下pod的资源情况。
+可以从cluster，node，pod的各个层面提供详细的资源使用情况。
 ```
 
 * InfluxDB：时序数据库，提供数据的存储，存储在指定的目录下。
@@ -63,7 +92,9 @@ Heapster将每个Node上的cAdvisor的数据进行汇总，然后导到InfluxDB�
 
 访问[http://localhost:8080/metrics，可以拿到cAdvisor暴露给](http://localhost:8080/metrics，可以拿到cAdvisor暴露给) Prometheus的数据
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/d38e7f63f9a647ce217bbb9bdc77db0a.png)
+可以curl [http://127.0.0.1:8080/metrics](http://127.0.0.1:8080/metrics)
+
+![cAdvisor+Prometheus+Grafana](http://www.xuyasong.com/wp-content/uploads/2019/01/d38e7f63f9a647ce217bbb9bdc77db0a.png)
 
 其他内容参考后续的prometheus文章
 
@@ -119,4 +150,8 @@ Prometheus的收集器（cadvisor/metrics/prometheus.go）
 爱奇艺参照cadvisor开发的dadvisor，数据写入graphite，
 等同于cadvisor+influxdb，但dadvisor并没有开源
 ```
+
+参考
+
+Docker\_ 来源：CSDN 原文：[https://blog.csdn.net/M2l0ZgSsVc7r69eFdTj/article/details/79608015](https://blog.csdn.net/M2l0ZgSsVc7r69eFdTj/article/details/79608015)
 
