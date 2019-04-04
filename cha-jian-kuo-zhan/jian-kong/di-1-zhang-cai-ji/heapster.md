@@ -28,17 +28,17 @@ Heapster是Kubernetes旗下的一个项目，Heapster是一个收集者，并不
 
 docker部署：
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/04df980f537101f123140ac0084a1196.png)
+![Heapster-docker&#x90E8;&#x7F72;](http://www.xuyasong.com/wp-content/uploads/2019/01/04df980f537101f123140ac0084a1196.png)
 
 k8s中部署：
 
 heapster.yml
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/7f71e6306f278e8d5f2a95bb140d90bb.png)
+![heapster.yml](http://www.xuyasong.com/wp-content/uploads/2019/01/7f71e6306f278e8d5f2a95bb140d90bb.png)
 
 influxdb.yml
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/8ecf4d51cc9c64775eaedcef1f911518.png)
+![ influxdb.yml](http://www.xuyasong.com/wp-content/uploads/2019/01/8ecf4d51cc9c64775eaedcef1f911518.png)
 
 注意修改镜像地址，k8s.gcr.io无法访问的话，修改为内网镜像地址，如替换为registry.cn-hangzhou.aliyuncs.com/google\_containers
 
@@ -58,21 +58,23 @@ inClusterConfig:
 
 ### Metrics列表 <a id="metrics-lie-biao"></a>
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/626916950630a7461320b47aead94821.png)
+![Metrics&#x5217;&#x8868;](http://www.xuyasong.com/wp-content/uploads/2019/01/626916950630a7461320b47aead94821.png)
 
 ## 深入解析 <a id="shen-ru-jie-xi"></a>
 
 架构图：
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/c6cc7daab52b226d81a95a51df66100a.png)
+![Heapster&#x67B6;&#x6784;&#x56FE;](http://www.xuyasong.com/wp-content/uploads/2019/01/c6cc7daab52b226d81a95a51df66100a.png)
+
+
 
 代码结构（[https://github.com/kubernetes-retired/heapster）](https://github.com/kubernetes-retired/heapster）)​
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/794b158e7f3ad6f69d064a87c3676da7.png)
+![Heapster-&#x4EE3;&#x7801;&#x7ED3;&#x6784;](http://www.xuyasong.com/wp-content/uploads/2019/01/794b158e7f3ad6f69d064a87c3676da7.png)
 
 heapster主函数（heapster/metrics/heapster.go）
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/176eb5c5ce6d264f37e9975afba9c1c2.png)
+![heapster&#x4E3B;&#x51FD;&#x6570;](http://www.xuyasong.com/wp-content/uploads/2019/01/176eb5c5ce6d264f37e9975afba9c1c2.png)
 
 主要流程：
 
@@ -84,11 +86,11 @@ heapster主函数（heapster/metrics/heapster.go）
 
 cAdvisor返回的原始数据包含了nodes和containers的相关数据，heapster需要创建各种processor，用于处理成不同类型的数据，比如pod, namespace, cluster，node的聚合，求和平均之类，processor有如下几种：
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/f2789d5a2fe67703e2caf7f577d6987f.png)
+![processor&#x79CD;&#x7C7B;](http://www.xuyasong.com/wp-content/uploads/2019/01/f2789d5a2fe67703e2caf7f577d6987f.png)
 
 例如Pod的处理如下：
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/827a0cd9a2c0d2d7be05305936d48194.png)
+![&#x4EE3;&#x7801;](http://www.xuyasong.com/wp-content/uploads/2019/01/827a0cd9a2c0d2d7be05305936d48194.png)
 
 详细解析参考: [https://segmentfault.com/a/1190000008863353](https://segmentfault.com/a/1190000008863353)​
 

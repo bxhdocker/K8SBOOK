@@ -110,7 +110,6 @@
     * [HPA](cha-jian-kuo-zhan/jian-kong/di-1-zhang-cai-ji/hpa.md)
     * [metrics-server](cha-jian-kuo-zhan/jian-kong/di-1-zhang-cai-ji/untitled-1.md)
     * [custom metrics自定义指标](cha-jian-kuo-zhan/jian-kong/di-1-zhang-cai-ji/custom-metrics-zi-ding-yi-zhi-biao.md)
-    * [Untitled](cha-jian-kuo-zhan/jian-kong/di-1-zhang-cai-ji/untitled-2.md)
     * [kube-state-metrics](cha-jian-kuo-zhan/jian-kong/di-1-zhang-cai-ji/kube-state-metrics.md)
     * [node-exporter](cha-jian-kuo-zhan/jian-kong/di-1-zhang-cai-ji/node-exporter.md)
     * [Prometheus](cha-jian-kuo-zhan/jian-kong/di-1-zhang-cai-ji/untitled-3/README.md)

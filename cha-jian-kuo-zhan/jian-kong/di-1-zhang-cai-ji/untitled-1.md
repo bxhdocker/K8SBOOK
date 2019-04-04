@@ -8,6 +8,8 @@ Metrics-Server是集群核心监控数据的聚合器，从 Kubernetes1.8 开始
 
 介绍Metrics-Server之前，必须要提一下Metrics API的概念
 
+### Metrics API的概念
+
 Metrics API相比于之前的监控采集方式\(hepaster\)是一种新的思路，官方希望核心指标的监控应该是稳定的，版本可控的，且可以直接被用户访问\(例如通过使用 kubectl top 命令\)，或由集群中的控制器使用\(如HPA\)，和其他的Kubernetes APIs一样。
 
 官方废弃heapster项目，就是为了将核心资源监控作为一等公民对待，即像pod、service那样直接通过api-server或者client直接访问，不再是安装一个hepater来汇聚且由heapster单独管理。
@@ -32,7 +34,7 @@ kube-aggregator（聚合api）主要提供：
 
 详细设计文档：[参考链接](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/aggregated-api-servers.md)​
 
-metric api的使用：
+### metric api的使用：
 
 * Metrics API 只可以查询当前的度量数据，并不保存历史数据
 * Metrics API URI 为 /apis/metrics.k8s.io/，在 k8s.io/metrics 维护
@@ -54,7 +56,7 @@ Metrics server定时从Kubelet的Summary API\(类似/ap1/v1/nodes/nodename/stats
 
 Metrics server复用了api-server的库来实现自己的功能，比如鉴权、版本等，为了实现将数据存放在内存中吗，去掉了默认的etcd存储，引入了内存存储（即实现[Storage interface](https://github.com/kubernetes/apiserver/blob/master/pkg/registry/rest/rest.go)\)。因为存放在内存中，因此监控数据是没有持久化的，可以通过第三方存储来拓展，这个和heapster是一致的。
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/03659112b8502f2a2ab7b7df8b735782.png)
+![Metrics-Server&#x67B6;&#x6784;&#x56FE;](http://www.xuyasong.com/wp-content/uploads/2019/01/03659112b8502f2a2ab7b7df8b735782.png)
 
 Metrics server出现后，新的​Kubernetes 监控架构将变成上图的样子
 

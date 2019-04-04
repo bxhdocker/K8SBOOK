@@ -28,11 +28,11 @@ HPA属于前者。它可以根据CPU使用率或应用自定义metrics自动扩�
 
 1.部署和运行php-apache并将其暴露成为服务
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/4115bcf5b70e874b486c96a8743fa45a.png)
+![php-apache](http://www.xuyasong.com/wp-content/uploads/2019/01/4115bcf5b70e874b486c96a8743fa45a.png)
 
 2.创建HPA
 
-![](http://www.xuyasong.com/wp-content/uploads/2019/01/69ebc98a51677feeb8276ff524635a38.png)
+![&#x521B;&#x5EFA;HPA](http://www.xuyasong.com/wp-content/uploads/2019/01/69ebc98a51677feeb8276ff524635a38.png)
 
 如果为1.8及以下的k8s集群，指标正常，如果为1.11集群，需要执行如下操作。
 
