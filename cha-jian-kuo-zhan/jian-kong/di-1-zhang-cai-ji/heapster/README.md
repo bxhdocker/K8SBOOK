@@ -22,7 +22,11 @@ Heapster是Kubernetes旗下的一个项目，Heapster是一个收集者，并不
 
 ### 流程： <a id="liu-cheng"></a>
 
-1.Heapster首先从apiserver获取集群中所有Node的信息。 2.通过这些Node上的kubelet获取有用数据，而kubelet本身的数据则是从cAdvisor得到。 3.所有获取到的数据都被推到Heapster配置的后端存储中，并还支持数据的可视化。
+1.Heapster首先从apiserver获取集群中所有Node的信息。
+
+ 2.通过这些Node上的kubelet获取有用数据，而kubelet本身的数据则是从cAdvisor得到。
+
+ 3.所有获取到的数据都被推到Heapster配置的后端存储中，并还支持数据的可视化。
 
 ### 部署 <a id="bu-shu"></a>
 

@@ -72,6 +72,8 @@ cadvisor 监听的端口将在 v1.12 中删除，建议所有外部工具使用 
 
 ![](http://www.xuyasong.com/wp-content/uploads/2019/01/bee50787d0de5749a4f11395da1aa327.png)
 
+来源：blog.kubernetes.io
+
 Heapster：在k8s集群中获取metrics和事件数据，写入InfluxDB，heapster收集的数据比cadvisor多，却全，而且存储在influxdb的也少。
 
 ```text
