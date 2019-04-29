@@ -19,7 +19,7 @@ Cluster AutoScaler v1.0+ 可以基于 Docker 镜像 `gcr.io/google_containers/cl
 
 Cluster AutoScaler 定期（默认间隔 10s）检测是否有充足的资源来调度新创建的 Pod，当资源不足时会调用 Cloud Provider 创建新的 Node。
 
-![](../.gitbook/assets/image%20%28132%29.png)
+![](../.gitbook/assets/image%20%28134%29.png)
 
 为了自动创建和初始化 Node，Cluster Autoscaler 要求 Node 必须属于某个 Node Group，比如
 
@@ -41,7 +41,7 @@ Cluster AutoScaler 定期（默认间隔 10s）检测是否有充足的资源来
 
 Cluster AutoScaler 也会定期（默认间隔 10s）自动监测 Node 的资源使用情况，当一个 Node 长时间（超过 10 分钟其期间没有执行任何扩展操作）资源利用率都很低时（低于 50%）自动将其所在虚拟机从云服务商中删除（注意删除时会有 1 分钟的 graceful termination 时间）。此时，原来的 Pod 会自动调度到其他 Node 上面（通过 Deployment、StatefulSet 等控制器）
 
-![](../.gitbook/assets/image%20%2875%29.png)
+![](../.gitbook/assets/image%20%2876%29.png)
 
 注意，Cluster Autoscaler 仅根据 Pod 的调度情况和 Node 的整体资源使用清空来增删 Node，跟 Pod 或 Node 的资源度量（metrics）没有直接关系。
 

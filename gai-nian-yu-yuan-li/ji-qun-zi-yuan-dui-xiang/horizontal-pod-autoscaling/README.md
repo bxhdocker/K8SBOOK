@@ -29,7 +29,7 @@ Horizontal Pod Autoscaling，简称HPA，是Kubernetes中实现POD水平自动�
 
 Horizontal Pod Autoscaling由API server和controller共同实现。
 
-![](../../../.gitbook/assets/image%20%28115%29.png)
+![](../../../.gitbook/assets/image%20%28116%29.png)
 
 
 
@@ -75,7 +75,7 @@ _以上查考：_[_https://blog.csdn.net/u011230692/article/details/86037169_](h
 
 如果为1.8及以下的k8s集群，指标正常，如果为1.11集群，需要执行如下操作
 
-![](../../../.gitbook/assets/image%20%2858%29.png)
+![](../../../.gitbook/assets/image%20%2859%29.png)
 
 ### 使用kubectl管理 <a id="&#x4F7F;&#x7528;kubectl&#x7BA1;&#x7406;"></a>
 
@@ -115,21 +115,21 @@ kubectl autoscale deployment foo --min=2 --max=5 --cpu-percent=80
 
 2.创建hpa
 
-![](../../../.gitbook/assets/image%20%2873%29.png)
+![](../../../.gitbook/assets/image%20%2874%29.png)
 
 3.或者使用yaml文件
 
-![](../../../.gitbook/assets/image%20%28121%29.png)
+![](../../../.gitbook/assets/image%20%28123%29.png)
 
 4.向php-apache服务增加负载，验证自动扩缩容
 
 启动一个容器，并通过一个循环向php-apache服务器发送无限的查询请求（请在另一个终端中运行以下命令）
 
-![](../../../.gitbook/assets/image%20%2882%29.png)
+![](../../../.gitbook/assets/image%20%2883%29.png)
 
 5.观察HPA是否生效
 
-![](../../../.gitbook/assets/image%20%2834%29.png)
+![](../../../.gitbook/assets/image%20%2835%29.png)
 
 HPA由一个控制循环实现，循环周期由–horizontal-pod-autoscaler-sync-period 标志指定，默认是30秒，每个周期内，controller-manager会查询HPA中定义的metric的资源利用率。
 

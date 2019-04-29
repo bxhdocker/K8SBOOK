@@ -19,7 +19,7 @@ Kubernetes 社区提供了一些列的工具来监控容器和集群的状态，
 
 [cAdvisor](https://github.com/google/cadvisor) 是一个来自 Google 的容器监控工具，也是 Kubelet 内置的容器资源收集工具。它会自动收集本机容器 CPU、内存、网络和文件系统的资源占用情况，并对外提供 cAdvisor 原生的 API（默认端口为 `--cadvisor-port=4194`）
 
-![](../../.gitbook/assets/image%20%28101%29.png)
+![](../../.gitbook/assets/image%20%28102%29.png)
 
 从 v1.7 开始，Kubelet metrics API 不再包含 cadvisor metrics，而是提供了一个独立的 API 接口：
 
@@ -38,7 +38,7 @@ helm install stable/prometheus --set rbac.create=true --name prometheus --namesp
 
 [InfluxDB](https://www.influxdata.com/time-series-platform/influxdb/) 是一个开源分布式时序、事件和指标数据库；而 [Grafana](http://grafana.org/) 则是 InfluxDB 的 Dashboard，提供了强大的图表展示功能。它们常被组合使用展示图表化的监控数据
 
-![](../../.gitbook/assets/image%20%28137%29.png)
+![](../../.gitbook/assets/image%20%28140%29.png)
 
 ### Heapster
 
@@ -50,7 +50,7 @@ Kubelet 内置的 cAdvisor 只提供了单机的容器资源占用情况，而 [
 
 Heapster 首先从 Kubernetes apiserver 查询所有 Node 的信息，然后再从 kubelet 提供的 API 采集节点和容器的资源占用，同时在 `/metrics` API 提供了 Prometheus 格式的数据。Heapster 采集到的数据可以推送到各种持久化的后端存储中，如 InfluxDB、Google Cloud Monitoring、OpenTSDB 等。
 
-![](../../.gitbook/assets/image%20%2886%29.png)
+![](../../.gitbook/assets/image%20%2887%29.png)
 
 #### 部署 Heapster、InfluxDB 和 Grafana
 
@@ -84,7 +84,7 @@ kubectl proxy --address='0.0.0.0' --port=8080 --accept-hosts='^*$' &
 
 然后打开 `http://<master-ip>:8080/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana` 就可以访问 Grafana。
 
-![](../../.gitbook/assets/image%20%28127%29.png)
+![](../../.gitbook/assets/image%20%28129%29.png)
 
 ### Prometheus
 
@@ -271,11 +271,11 @@ kubectl apply -f "https://cloud.weave.works/k8s/scope.yaml?k8s-version=$(kubectl
 kubectl -n weave get service weave-scope-app
 ```
 
-![](../../.gitbook/assets/image%20%28108%29.png)
+![](../../.gitbook/assets/image%20%28109%29.png)
 
 点击 Pod，还可以查看该 Pod 所有容器的实时状态和度量数据：
 
-![](../../.gitbook/assets/image%20%28102%29.png)
+![](../../.gitbook/assets/image%20%28103%29.png)
 
 ### 参考文档
 

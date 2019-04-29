@@ -13,7 +13,7 @@ Git是目前世界上最先进的分布式版本控制系统。
   
 工作原理 / 流程：
 
-![](../.gitbook/assets/image%20%2848%29.png)
+![](../.gitbook/assets/image%20%2849%29.png)
 
 #### SVN与Git的最主要的区别？
 

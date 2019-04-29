@@ -21,7 +21,7 @@ Borg主要由BorgMaster、Borglet、borgcfg和Scheduler组成，如下图所示
 
 Kubernetes借鉴了Borg的设计理念，比如Pod、Service、Labels和单Pod单IP等。Kubernetes的整体架构跟Borg非常像，如下图所示
 
-![](../../.gitbook/assets/image%20%2832%29.png)
+![](../../.gitbook/assets/image%20%2833%29.png)
 
  Kubernetes架构
 

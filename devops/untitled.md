@@ -10,7 +10,7 @@ NSQ可用于大规模系统中的实时消息服务，并且每天能够处理�
 
 下面上一张Nsq与其他mq的对比图
 
-![](../.gitbook/assets/image%20%2862%29.png)
+![](../.gitbook/assets/image%20%2863%29.png)
 
 图片来自golang2017开发者大会
 
@@ -32,7 +32,7 @@ NSQ主要包含3个组件：
 * nsqlookup：为守护进程，负责管理拓扑信息并提供发现服务。客户端通过查询 nsqlookupd 来发现指定话题（topic）的生产者，并且 nsqd 节点广播话题（topic）和通道（channel）信息
 * nsqadmin：一套WEB UI，用来汇集集群的实时统计，并执行不同的管理任务
 
-![](../.gitbook/assets/image%20%28143%29.png)
+![](../.gitbook/assets/image%20%28146%29.png)
 
 #### 2.2 特性
 
@@ -87,7 +87,7 @@ topics和channels的所有缓存数据都相互独立，目的是为了防止一
 
 一个channel通常有多个消费者连接，假如所有消费者都是在准备接收消息状态，每个消息会被随机投递到消费者中。
 
-![](../.gitbook/assets/image%20%2888%29.png)
+![](../.gitbook/assets/image%20%2889%29.png)
 
 综述，消息是从topic广播到channel，然后从channel投递到消费者中。
 

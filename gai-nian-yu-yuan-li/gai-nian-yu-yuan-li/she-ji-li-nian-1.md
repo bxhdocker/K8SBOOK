@@ -67,7 +67,7 @@ API对象是Kubernetes集群中的管理操作单元。Kubernetes集群系统每
 
 每个API对象都有3大类属性：**元数据metadata**、**规范spec**和**状态status**。
 
-![API&#x5BF9;&#x8C61;&#x5143;&#x6570;&#x636E;&#x4E3E;&#x4F8B;](../../.gitbook/assets/image%20%28140%29.png)
+![API&#x5BF9;&#x8C61;&#x5143;&#x6570;&#x636E;&#x4E3E;&#x4F8B;](../../.gitbook/assets/image%20%28143%29.png)
 
 元数据是用来标识API对象的，每个对象都至少有3个元数据：namespace，name和uid；
 

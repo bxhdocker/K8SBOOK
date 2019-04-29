@@ -4,7 +4,7 @@
   
 你一直在Kubernetes集群中运行一系列服务并已从中获益，或者你正打算这么做。尽管有一系列工具能帮助你建立并管理集群，你仍困惑于集群底层是如何工作的，以及出现问题该如何处理。我曾经就是这样的。
 
-![](../../.gitbook/assets/image%20%2840%29.png)
+![](../../.gitbook/assets/image%20%2841%29.png)
 
   
 诚然Kubernetes对初学者来说已足够易用，但我们仍然不得不承认，它的底层实现异常复杂。Kubernetes由许多部件组成，如果你想对失败场景做好应对准备，那么你必须知道各部件是如何协调工作的。其中一个最复杂，甚至可以说是最关键的部件就是网络。  
@@ -27,20 +27,20 @@
 
 第一步是确保同一节点上的Pod可以相互通信，然后可以扩展到跨节点通信、internet上的通信，等等。
 
-![Kubernetes Node&#xFF08;root network namespace&#xFF09;](../../.gitbook/assets/image%20%28112%29.png)
+![Kubernetes Node&#xFF08;root network namespace&#xFF09;](../../.gitbook/assets/image%20%28113%29.png)
 
 在每个Kubernetes节点（本场景指的是Linux机器）上，都有一个根（root）命名空间（root是作为基准，而不是超级用户）--root netns。  
   
 最主要的网络接口 `eth0` 就是在这个root netns下。
 
-![Kubernetes Node&#xFF08;pod network namespace&#xFF09;](../../.gitbook/assets/image%20%28152%29.png)
+![Kubernetes Node&#xFF08;pod network namespace&#xFF09;](../../.gitbook/assets/image%20%28155%29.png)
 
   
 类似的，每个Pod都有其自身的netns，通过一个虚拟的以太网对连接到root netns。这基本上就是一个管道对，一端在root netns内，另一端在Pod的nens内。  
   
 我们把Pod端的网络接口叫 `eth0`，这样Pod就不需要知道底层主机，它认为它拥有自己的根网络设备。另一端命名成比如 `vethxxx`。你可以用`ifconfig` 或者 `ip a` 命令列出你的节点上的所有这些接口。
 
-![Kubernetes Node&#xFF08;linux network bridge&#xFF09;](../../.gitbook/assets/image%20%28135%29.png)
+![Kubernetes Node&#xFF08;linux network bridge&#xFF09;](../../.gitbook/assets/image%20%28137%29.png)
 
   
 节点上的所有Pod都会完成这个过程。这些Pod要相互通信，就要用到linux的以太网桥 `cbr0` 了。Docker使用了类似的网桥，称为`docker`。  
