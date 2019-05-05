@@ -190,7 +190,7 @@
 * [排错工具](k8s-yun-wei-pai-cha/pai-cuo-gong-ju.md)
 * [K8S--100问](k8s-yun-wei-pai-cha/untitled-1/README.md)
   * [容器的终止流程](k8s-yun-wei-pai-cha/untitled-1/rong-qi-de-zhong-zhi-liu-cheng.md)
-  * [Untitled](k8s-yun-wei-pai-cha/untitled-1/untitled-6.md)
+  * [Kubernetes 中如何保证优雅地停止 Pod](k8s-yun-wei-pai-cha/untitled-1/untitled-6.md)
   * [Untitled](k8s-yun-wei-pai-cha/untitled-1/untitled-5.md)
   * [Untitled](k8s-yun-wei-pai-cha/untitled-1/untitled-3.md)
   * [Untitled](k8s-yun-wei-pai-cha/untitled-1/untitled-2.md)
