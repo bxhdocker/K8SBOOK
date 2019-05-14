@@ -118,6 +118,16 @@ tar xvf harbor-offline-installer-v1.5.1.tgz
 
 ![](../.gitbook/assets/image%20%2844%29.png)
 
+其中：
+
+Harbor.cfg 全局配置文件，主要包含了一些常用设置，比如是否开启https等。
+
+install.sh　安装脚本
+
+prepare  是一个python写的预处理脚本，主要用于初始化一些harbor.cfg的相关设置。
+
+docker-compose.yaml 描述了组件之间依赖关系以及配置挂载，数据持久化等设置
+
 #### 3.2、修改配置文件【harbor.cfg】
 
 ```text
@@ -197,7 +207,34 @@ self\_registration：（on或off。默认为on）启用/禁用用户注册自己
 
 ![](../.gitbook/assets/image%20%288%29.png)
 
+注：添加阿里云oss做存储
 
+官方文档：[https://docs.docker.com/registry/storage-drivers/oss/](https://docs.docker.com/registry/storage-drivers/oss/)
+
+docker-compose.yml文件中registry:容器内增加以下内容
+
+```text
+registry:
+    image: vmware/registry:2.6.2-photon
+    container_name: registry
+    restart: always
+    volumes:
+      - ./common/config/registry/:/etc/registry/:z
+    networks:
+      - harbor
+    environment:
+      - GODEBUG=netdns=cgo
+      - REGISTRY_STORAGE=oss  以下是增加内容
+      - REGISTRY_STORAGE_OSS_ACCESSKEYID=LTAIfsho0tQOP
+      - REGISTRY_STORAGE_OSS_ACCESSKEYSECRET=yZse38u3tyeazZlJG6WEhO9bZ9Tg
+      - REGISTRY_STORAGE_OSS_REGION=oss-cn-hangzhou
+      - REGISTRY_STORAGE_OSS_BUCKET=mz-registry
+      - REGISTRY_STORAGE_OSS_ENDPOINT=mz-registry.vpc100-oss-cn-hangzhou.aliyuncs.com
+      - REGISTRY_STORAGE_OSS_SECURE=false
+      - REGISTRY_STORAGE_OSS_ROOTDIRECTORY=vpc
+      - REGISTRY_STORAGE_DELETE_ENABLED=true
+
+```
 
 #### **3.3、运行【prepare】**使用官方自带脚本更新参数
 
@@ -360,7 +397,7 @@ docker-compose up –d
 
 #### 3.5、打开页面访问：
 
-![](../.gitbook/assets/image%20%28136%29.png)
+![](../.gitbook/assets/image%20%28137%29.png)
 
 命令行登陆Harbor
 

@@ -24,7 +24,22 @@ Deployment 为 Pod 和 ReplicaSet 提供了一个声明式定义 \(declarative\)
 比如一个简单的 nginx 应用可以定义为
 
 ```text
-apiVersion: apps/v1kind: Deploymentmetadata:  name: nginx-deploymentspec:  replicas: 3  template:    metadata:      labels:        app: nginx    spec:      containers:      - name: nginx        image: nginx:1.7.9        ports:        - containerPort: 80
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
 ```
 
 扩容：
@@ -83,7 +98,8 @@ Deployment 为 Pod 和 Replica Set（下一代 Replication Controller）提供�
 下载示例文件并执行命令：
 
 ```text
-$ kubectl create -f docs/user-guide/nginx-deployment.yaml --recorddeployment "nginx-deployment" created
+$ kubectl create -f https://kubernetes.io/docs/user-guide/nginx-deployment.yaml --record
+deployment "nginx-deployment" created
 ```
 
 将 kubectl 的 `—record` 的 flag 设置为 `true` 可以在 annotation 中记录当前命令创建或者升级了该资源。这在未来会很有用，例如，查看在每个 Deployment revision 中执行了哪些命令。
@@ -91,7 +107,9 @@ $ kubectl create -f docs/user-guide/nginx-deployment.yaml --recorddeployment "ng
 然后立即执行 `get` 将获得如下结果：
 
 ```text
-$ kubectl get deploymentsNAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGEnginx-deployment   3         0         0            0           1s
+$ kubectl get deployments
+NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3         0         0            0           1s
 ```
 
 输出结果表明我们希望的 repalica 数是 3（根据 deployment 中的 `.spec.replicas` 配置）当前 replica 数（ `.status.replicas`）是 0, 最新的 replica 数（`.status.updatedReplicas`）是 0，可用的 replica 数（`.status.availableReplicas`）是 0。
@@ -99,24 +117,38 @@ $ kubectl get deploymentsNAME               DESIRED   CURRENT   UP-TO-DATE   AVA
 过几秒后再执行 `get` 命令，将获得如下输出：
 
 ```text
-$ kubectl get deploymentsNAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGEnginx-deployment   3         3         3            3           18s
+$ kubectl get deployments
+NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3         3         3            3           18s
 ```
 
 我们可以看到 Deployment 已经创建了 3 个 replica，所有的 replica 都已经是最新的了（包含最新的 pod template），可用的（根据 Deployment 中的 `.spec.minReadySeconds` 声明，处于已就绪状态的 pod 的最少个数）。执行 `kubectl get rs` 和 `kubectl get pods` 会显示 Replica Set（RS）和 Pod 已创建。
 
 ```text
-$ kubectl get rsNAME                          DESIRED   CURRENT   READY   AGEnginx-deployment-2035384211   3         3         0       18s
+$ kubectl get rs
+NAME                          DESIRED   CURRENT   READY   AGE
+nginx-deployment-2035384211   3   
 ```
 
 你可能会注意到 Replica Set 的名字总是 `<Deployment 的名字>-<pod template 的 hash 值 >`。
 
 ```text
-$ kubectl get pods --show-labelsNAME                                READY     STATUS    RESTARTS   AGE       LABELSnginx-deployment-2035384211-7ci7o   1/1       Running   0          18s       app=nginx,pod-template-hash=2035384211nginx-deployment-2035384211-kzszj   1/1       Running   0          18s       app=nginx,pod-template-hash=2035384211nginx-deployment-2035384211-qqcnn   1/1       Running   0          18s       app=nginx,pod-template-hash=2035384211
+$ kubectl get pods --show-labels
+NAME                                READY     STATUS    RESTARTS   AGE       LABELS
+nginx-deployment-2035384211-7ci7o   1/1       Running   0          18s       app=nginx,pod-template-hash=2035384211
+nginx-deployment-2035384211-kzszj   1/1       Running   0          18s       app=nginx,pod-template-hash=2035384211
+nginx-deployment-2035384211-qqcnn   1/1       Running   0          18s       app=nginx,pod-template-hash=2035384211
 ```
 
 刚创建的 Replica Set 将保证总是有 3 个 nginx 的 pod 存在。
 
  **注意：** 你必须在 Deployment 中的 selector 指定正确 pod template label（在该示例中是 `app = nginx`），不要跟其他的 controller 搞混了（包括 Deployment、Replica Set、Replication Controller 等）。**Kubernetes 本身不会阻止你这么做** ，如果你真的这么做了，这些 controller 之间会相互打架，并可能导致不正确的行为。
+
+## Pod-template-hash label
+
+**注意**：这个 label 不是用户指定的！
+
+注意上面示例输出中的 pod label 里的 pod-template-hash label。当 Deployment 创建或者接管 ReplicaSet 时，Deployment controller 会自动为 Pod 添加 pod-template-hash label。这样做的目的是防止 Deployment 的子ReplicaSet 的 pod 名字重复。通过将 ReplicaSet 的 PodTemplate 进行哈希散列，使用生成的哈希值作为 label 的值，并添加到 ReplicaSet selector 里、 pod template label 和 ReplicaSet 管理中的 Pod 上。
 
 ## 更新 Deployment <a id="geng-xin-deployment"></a>
 
@@ -125,25 +157,31 @@ $ kubectl get pods --show-labelsNAME                                READY     ST
 假如我们现在想要让 nginx pod 使用 `nginx:1.9.1` 的镜像来代替原来的 `nginx:1.7.9` 的镜像。
 
 ```text
-$ kubectl set image deployment/nginx-deployment nginx=nginx:1.9.1deployment "nginx-deployment" image updated
+$ kubectl set image deployment/nginx-deployment nginx=nginx:1.9.1
+deployment "nginx-deployment" image updated
 ```
 
 我们可以使用 `edit` 命令来编辑 Deployment，修改 `.spec.template.spec.containers[0].image` ，将 `nginx:1.7.9` 改写成 `nginx:1.9.1`。
 
 ```text
-$ kubectl edit deployment/nginx-deploymentdeployment "nginx-deployment" edited
+$ kubectl edit deployment/nginx-deployment
+deployment "nginx-deployment" edited
 ```
 
 查看 rollout 的状态，只要执行：
 
 ```text
-$ kubectl rollout status deployment/nginx-deploymentWaiting for rollout to finish: 2 out of 3 new replicas have been updated...deployment "nginx-deployment" successfully rolled out
+$ kubectl rollout status deployment/nginx-deployment
+Waiting for rollout to finish: 2 out of 3 new replicas have been updated...
+deployment "nginx-deployment" successfully rolled out
 ```
 
 Rollout 成功后，`get` Deployment：
 
 ```text
-$ kubectl get deploymentsNAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGEnginx-deployment   3         3         3            3           36s
+$ kubectl get deployments
+NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3         3         3            3           36s
 ```
 
 UP-TO-DATE 的 replica 的数目已经达到了配置中要求的数目。
@@ -153,13 +191,20 @@ CURRENT 的 replica 数表示 Deployment 管理的 replica 数量，AVAILABLE �
 我们通过执行 `kubectl get rs` 可以看到 Deployment 更新了 Pod，通过创建一个新的 Replica Set 并扩容了 3 个 replica，同时将原来的 Replica Set 缩容到了 0 个 replica。
 
 ```text
-$ kubectl get rsNAME                          DESIRED   CURRENT   READY   AGEnginx-deployment-1564180365   3         3         0       6snginx-deployment-2035384211   0         0         0       36s
+$ kubectl get rs
+NAME                          DESIRED   CURRENT   READY   AGE
+nginx-deployment-1564180365   3         3         0       6s
+nginx-deployment-2035384211   0         0         0       36s
 ```
 
 执行 `get pods` 只会看到当前的新的 pod:
 
 ```text
-$ kubectl get podsNAME                                READY     STATUS    RESTARTS   AGEnginx-deployment-1564180365-khku8   1/1       Running   0          14snginx-deployment-1564180365-nacti   1/1       Running   0          14snginx-deployment-1564180365-z9gth   1/1       Running   0          14s
+$ kubectl get pods
+NAME                                READY     STATUS    RESTARTS   AGE
+nginx-deployment-1564180365-khku8   1/1       Running   0          14s
+nginx-deployment-1564180365-nacti   1/1       Running   0          14s
+nginx-deployment-1564180365-z9gth   1/1       Running   0          14s
 ```
 
 下次更新这些 pod 的时候，只需要更新 Deployment 中的 pod 的 template 即可。

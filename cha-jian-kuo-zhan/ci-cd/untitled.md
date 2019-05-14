@@ -28,7 +28,7 @@
 
 在注册完成后就可以获得如下图所示的OAuth Client ID和Client Secret，保存下来，我们后面要用到
 
-![](../../.gitbook/assets/image%20%28128%29.png)
+![](../../.gitbook/assets/image%20%28129%29.png)
 
 ### 使用docker-compose单机运行 <a id="&#x4F7F;&#x7528;docker-compose&#x5355;&#x673A;&#x8FD0;&#x884C;"></a>
 

@@ -212,7 +212,7 @@ Kubelet 作为 CRI 的客户端，而容器运行时则需要实现 CRI 的服�
 
 #### Pod 启动流程 <a id="pod-&#x542F;&#x52A8;&#x6D41;&#x7A0B;"></a>
 
-![](../../../.gitbook/assets/image%20%28149%29.png)
+![](../../../.gitbook/assets/image%20%28150%29.png)
 
 ![](https://kubernetes.feisky.xyz/zh/components/images/pod-start.png)
 

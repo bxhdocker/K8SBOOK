@@ -19,7 +19,7 @@ Cluster AutoScaler v1.0+ 可以基于 Docker 镜像 `gcr.io/google_containers/cl
 
 Cluster AutoScaler 定期（默认间隔 10s）检测是否有充足的资源来调度新创建的 Pod，当资源不足时会调用 Cloud Provider 创建新的 Node。
 
-![](../.gitbook/assets/image%20%28134%29.png)
+![](../.gitbook/assets/image%20%28135%29.png)
 
 为了自动创建和初始化 Node，Cluster Autoscaler 要求 Node 必须属于某个 Node Group，比如
 

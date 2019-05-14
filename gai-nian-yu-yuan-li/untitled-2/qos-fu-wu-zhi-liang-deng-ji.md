@@ -32,7 +32,7 @@ QoS（Quality of Service），大部分译为“服务质量等级”，又译�
 
 ![](../../.gitbook/assets/image%20%2886%29.png)
 
-![](../../.gitbook/assets/image%20%28154%29.png)
+![](../../.gitbook/assets/image%20%28155%29.png)
 
 ![](../../.gitbook/assets/image%20%2836%29.png)
 

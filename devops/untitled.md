@@ -32,7 +32,7 @@ NSQ主要包含3个组件：
 * nsqlookup：为守护进程，负责管理拓扑信息并提供发现服务。客户端通过查询 nsqlookupd 来发现指定话题（topic）的生产者，并且 nsqd 节点广播话题（topic）和通道（channel）信息
 * nsqadmin：一套WEB UI，用来汇集集群的实时统计，并执行不同的管理任务
 
-![](../.gitbook/assets/image%20%28146%29.png)
+![](../.gitbook/assets/image%20%28147%29.png)
 
 #### 2.2 特性
 

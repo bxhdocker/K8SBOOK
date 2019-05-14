@@ -38,7 +38,7 @@ helm install stable/prometheus --set rbac.create=true --name prometheus --namesp
 
 [InfluxDB](https://www.influxdata.com/time-series-platform/influxdb/) 是一个开源分布式时序、事件和指标数据库；而 [Grafana](http://grafana.org/) 则是 InfluxDB 的 Dashboard，提供了强大的图表展示功能。它们常被组合使用展示图表化的监控数据
 
-![](../../.gitbook/assets/image%20%28140%29.png)
+![](../../.gitbook/assets/image%20%28141%29.png)
 
 ### Heapster
 
@@ -84,7 +84,7 @@ kubectl proxy --address='0.0.0.0' --port=8080 --accept-hosts='^*$' &
 
 然后打开 `http://<master-ip>:8080/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana` 就可以访问 Grafana。
 
-![](../../.gitbook/assets/image%20%28129%29.png)
+![](../../.gitbook/assets/image%20%28130%29.png)
 
 ### Prometheus
 

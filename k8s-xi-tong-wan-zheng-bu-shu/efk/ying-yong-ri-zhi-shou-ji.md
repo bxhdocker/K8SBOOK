@@ -167,7 +167,7 @@ green open filebeat-docker-test            7xPEwEbUQRirk8oDX36gAA 5 1   2151    
 
 以下详细字段
 
-![&#x56FE;&#x7247; - filebeat&#x6536;&#x96C6;&#x7684;&#x65E5;&#x5FD7;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;](../../.gitbook/assets/image%20%28138%29.png)
+![&#x56FE;&#x7247; - filebeat&#x6536;&#x96C6;&#x7684;&#x65E5;&#x5FD7;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;](../../.gitbook/assets/image%20%28139%29.png)
 
 * `_index`值即我们在YAML文件的`configMap`中配置的index值
 * `beat.hostname`和`beat.name`即pod的名称

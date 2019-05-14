@@ -10,11 +10,11 @@
   
 Prometheus是一款开源的监控和告警系统，2016年加入CNCF，以其灵活的检索语言，高效的数据存储方式以及多维度的数据模型使得越来越多的人使用。Istio自0.8开始就默认的将Prometheus包含在内，我们可以通过查询service或者pod看到普罗的运行状态和地址。点开Prometheus界面，UI十分简洁明了。
 
-![](../../.gitbook/assets/image%20%28152%29.png)
+![](../../.gitbook/assets/image%20%28153%29.png)
 
  用户在Expression内输入想要查询数据的表达式，并且再输入的过程中，普罗还会在已有的指标中做出提示方便用户查找。我们输入一个简单的查询表达式istio\_requests\_total,点击Execute，在图形界面中，将鼠标放到图中的折线可以看到请求的详细信息。
 
-![](../../.gitbook/assets/image%20%28133%29.png)
+![](../../.gitbook/assets/image%20%28134%29.png)
 
  详细信息中的每一项都可以作为选定参考指标的特性，例如我们需要查询返回值为200的productpage请求总数，就可以在之前的表达式中添加大括号和限定条件。
 
@@ -26,7 +26,7 @@ Prometheus是一款开源的监控和告警系统，2016年加入CNCF，以其�
   
 Istio配合jaeger可以解决端到端的分布式追踪问题。Jaeger于2017年9月成为CNCF的成员。Jaeger是一款开源的分布式追踪系统，由Google Dapper和OpenZipkin社区联合推动。
 
-![](../../.gitbook/assets/image%20%28144%29.png)
+![](../../.gitbook/assets/image%20%28145%29.png)
 
  Jager主要可以使用在微服务的架构上来完成分布式上下文广播，分布式事务监控，根因分析，服务依赖关系分析，性能/延迟优化等功能。
 
@@ -34,7 +34,7 @@ Istio配合jaeger可以解决端到端的分布式追踪问题。Jaeger于2017�
 
  Jaeger的界面极其简洁，在首页面选择你想了解的服务（productpage）以及选择你想观测的时间范围（过去两天），而后点击find trace按钮，页面就会显示过去两天内访问productpage的所有trace。点击trace的名字，则会跳转到详情界面。
 
-![](../../.gitbook/assets/image%20%28130%29.png)
+![](../../.gitbook/assets/image%20%28131%29.png)
 
  这个界面中你可以看到每个请求可能会分为不止一个的子请求，以及这个请求的处理时间。例如我们访问productpage，productpage会请求details和reviews这两个服务，那么初始的请求就会分为两个子请求，一个请求details的内容另一个请求reviews的内容。Details部分的请求总耗时4.99ms，reviews部分的请求耗时5.61ms。内容返回并处理后，整个productpage的请求耗时21.32ms。这个详情界面不仅会体现每个请求的耗时也反映服务之间的调用关系。根据istio官方给出的解释，我们知道istio proxy根据http部分headers来归纳和合并请求的。
 
@@ -63,7 +63,7 @@ Istio配合jaeger可以解决端到端的分布式追踪问题。Jaeger于2017�
 
  我们先打开jaeger UI确定过去一个小时没有任何对productpage的访问。
 
-![](../../.gitbook/assets/image%20%28150%29.png)
+![](../../.gitbook/assets/image%20%28151%29.png)
 
  而后将PILOT\_TRACE\_SAMPLING的值从原有的100改为50。修改并保存后会有提示信息显示istio-pilot已经被修改。 
 

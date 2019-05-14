@@ -200,6 +200,7 @@
 
 ## 附录
 
+* [CKA认证](fu-lu/cka-ren-zheng.md)
 * [生态圈](fu-lu/sheng-tai-quan.md)
 * [资讯快报](fu-lu/zi-xun-kuai-bao/README.md)
   * [2018态势回顾与2019年前景展望](fu-lu/zi-xun-kuai-bao/2018-tai-shi-hui-gu-yu-2019-nian-qian-jing-zhan-wang.md)
