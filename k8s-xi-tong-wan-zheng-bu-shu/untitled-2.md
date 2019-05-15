@@ -207,7 +207,7 @@ self\_registration：（on或off。默认为on）启用/禁用用户注册自己
 
 ![](../.gitbook/assets/image%20%288%29.png)
 
-注：添加阿里云oss做存储
+#### 注：添加阿里云oss做存储
 
 官方文档：[https://docs.docker.com/registry/storage-drivers/oss/](https://docs.docker.com/registry/storage-drivers/oss/)
 
@@ -392,7 +392,7 @@ For more details, please visit https://github.com/vmware/harbor .
 启动：
 
 ```text
-docker-compose up –d
+docker-compose up -d
 ```
 
 #### 3.5、打开页面访问：
@@ -503,7 +503,11 @@ tail -n 50 /var/log/harbor/adminserver.log
 
 
 
-文章参考：[https://www.jianshu.com/p/bca5251c9a08](https://www.jianshu.com/p/bca5251c9a08)
+## 六.文章参考：
+
+[https://solution.cloudcare.cn/?p=1519](https://solution.cloudcare.cn/?p=1519)
+
+[https://www.jianshu.com/p/bca5251c9a08](https://www.jianshu.com/p/bca5251c9a08)
 
 [http://blog.51cto.com/dangzhiqiang/1962874](http://blog.51cto.com/dangzhiqiang/1962874)
 
