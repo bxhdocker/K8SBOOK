@@ -404,6 +404,9 @@ docker-compose up -d
 由于https原因登陆报错，修改docker配置文件
 
 ```text
+如果系统是Ubuntu，则修改配置文件/lib/systemd/system/docker.service，
+修改[Service]下ExecStart参数，增加– insecure-registry=172.16.22.76。
+如果系统是Centos，可以修改配置/etc/sysconfig/docker
 vi /etc/sysconfig/docker
 ## 追加参数 --insecure-registry 172.16.22.76
 OPTIONS='--selinux-enabled --log-driver=journald --signature-verification=false --insecure-registry 172.16.22.76
