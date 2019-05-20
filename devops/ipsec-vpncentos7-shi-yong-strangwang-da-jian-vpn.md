@@ -228,7 +228,11 @@ sysctl -p
 
 CentOS配置iptables防火墙，允许UDP500，UDP4500，并配置转发和NAT规则
 
-参考
+参考，公司可通腾讯云，但腾讯云却不能通公司就是缺失nat转发
+
+```text
+iptables -t nat -A POSTROUTING -j MASQUERADE
+```
 
 ```text
 # 停用firewalld，启用iptables
