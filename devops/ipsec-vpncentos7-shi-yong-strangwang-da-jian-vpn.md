@@ -228,6 +228,29 @@ sysctl -p
 
 CentOS配置iptables防火墙，允许UDP500，UDP4500，并配置转发和NAT规则
 
+参考
+
+```text
+# 停用firewalld，启用iptables
+systemctl stop firewalld
+systemctl disable firewalld
+yum install -y iptables-services iptables-devel
+systemctl enable iptables
+systemctl start iptables
+systemctl status iptables
+
+# 启用转发
+echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+sysctl -p
+# 添加nat
+iptables -t nat -A POSTROUTING -j MASQUERADE
+
+# 设置允许转发。默认是拒绝所有转发，-I 插入一下规则
+iptables -I FORWARD -s 192.168.0.0/16 -j ACCEPT
+iptables -I FORWARD -d 192.168.0.0/16 -j ACCEPT
+service iptables save
+```
+
 #### 腾讯内网安全组放开4500和500
 
 #### 启动
