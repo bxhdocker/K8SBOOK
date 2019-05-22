@@ -2,11 +2,11 @@
 
 Kubernetes集群的所有操作基本上都是通过kube-apiserver这个组件进行的，它提供HTTP [RESTful](https://www.centos.bz/tag/restful/)形式的API供集群内外客户端调用。需要注意的是：认证授权过程只存在[HTTPS](https://www.centos.bz/tag/https/)形式的API中。也就是说，如果客户端使用HTTP连接到kube-apiserver，那么是不会进行认证授权的。所以说，可以这么设置，在集群内部组件间通信使用HTTP，集群外部就使用HTTPS，这样既增加了安全性，也不至于太复杂。
 
-![](../../.gitbook/assets/image%20%28158%29.png)
+![](../../.gitbook/assets/image%20%28159%29.png)
 
-![](../../.gitbook/assets/image%20%28148%29.png)
+![](../../.gitbook/assets/image%20%28149%29.png)
 
-![](../../.gitbook/assets/image%20%28121%29.png)
+![](../../.gitbook/assets/image%20%28122%29.png)
 
 基本结构主要就是三个:
 
@@ -40,7 +40,7 @@ client发起apiserver调用时，apiserver先**认证\(Authentication\)用户，
 * 授权：授予用户**api请求**权限，并鉴别用户访问的**api请求**是否合法
 * 准入控制：一些额外的检查机制，用于做最后的拦截
 
-![](../../.gitbook/assets/image%20%28112%29.png)
+![](../../.gitbook/assets/image%20%28113%29.png)
 
 
 

@@ -188,7 +188,7 @@ prometheus-86cb6dd77c-5j48h                1/1       Running     0          11h
 
 #### 或者把ser ip加入到这里 
 
-![](../../.gitbook/assets/image%20%2822%29.png)
+![](../../.gitbook/assets/image%20%2823%29.png)
 
 ### 卸载 <a id="&#x5378;&#x8F7D;"></a>
 
@@ -210,7 +210,7 @@ $ kubectl delete -f install/kubernetes/istio.yaml
 
  对控制面各组件的作用作用及故障影响进行了汇总，结果如下：[链接](http://dockone.io/article/8506)
 
-![](../../.gitbook/assets/image%20%28149%29.png)
+![](../../.gitbook/assets/image%20%28150%29.png)
 
 
 

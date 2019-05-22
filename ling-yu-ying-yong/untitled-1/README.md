@@ -6,13 +6,13 @@
 
 **TL;DR** 关于Istio中的各个组件和一些关键信息请参考下面的mindmap。
 
-![](../../.gitbook/assets/image%20%2882%29.png)
+![](../../.gitbook/assets/image%20%2883%29.png)
 
 图片 - Istio的mindmap
 
 ### 简介 <a id="&#x7B80;&#x4ECB;"></a>
 
-![](../../.gitbook/assets/image%20%2811%29.png)
+![](../../.gitbook/assets/image%20%2812%29.png)
 
 使用istio可以很简单的创建具有负载均衡、服务间认证、监控等功能的服务网络，而不需要对服务的代码进行任何修改。你只需要在部署环境中，例如Kubernetes的pod里注入一个特别的sidecar proxy来增加对istio的支持，用来截获微服务之间的网络流量。
 

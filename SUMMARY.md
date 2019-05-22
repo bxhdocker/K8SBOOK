@@ -229,6 +229,7 @@
 * [CoreOS部署Kubernetes集群](k8s-xi-tong-wan-zheng-bu-shu/untitled-1.md)
 * [EFK](k8s-xi-tong-wan-zheng-bu-shu/efk/README.md)
   * [应用日志收集](k8s-xi-tong-wan-zheng-bu-shu/efk/ying-yong-ri-zhi-shou-ji.md)
+  * [ES搭建](k8s-xi-tong-wan-zheng-bu-shu/efk/es-da-jian.md)
 * [非K8S主机部署Filebat](k8s-xi-tong-wan-zheng-bu-shu/untitled-3.md)
 * [镜像仓库-Harbor](k8s-xi-tong-wan-zheng-bu-shu/untitled-2.md)
 * [Git 实战教程](k8s-xi-tong-wan-zheng-bu-shu/untitled.md)

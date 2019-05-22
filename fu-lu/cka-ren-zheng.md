@@ -12,7 +12,7 @@ CKA考试费用参与人员需要支付300$的考试费用，因此一张双币�
 
 购买了CKA考试，完成后CNFC会给出Exam Preparation Checklist![](//upload-images.jianshu.io/upload_images/6553110-56519377689b1398?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000)cka1
 
-![](../.gitbook/assets/image%20%28127%29.png)
+![](../.gitbook/assets/image%20%28128%29.png)
 
 **1、有效期一年**。在一年内需要定好考试的时间。
 

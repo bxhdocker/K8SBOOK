@@ -33,7 +33,7 @@ spec:
     name: busybox
 ```
 
-![](../../.gitbook/assets/image%20%2873%29.png)
+![](../../.gitbook/assets/image%20%2874%29.png)
 
 ### 支持配置私有 DNS 服务器和上游 DNS 服务器 <a id="&#x652F;&#x6301;&#x914D;&#x7F6E;&#x79C1;&#x6709;-dns-&#x670D;&#x52A1;&#x5668;&#x548C;&#x4E0A;&#x6E38;-dns-&#x670D;&#x52A1;&#x5668;"></a>
 
@@ -54,7 +54,7 @@ data:
 
 使用上述特定配置，查询请求首先会被发送到 kube-dns 的 DNS 缓存层 \(Dnsmasq 服务器\)。Dnsmasq 服务器会先检查请求的后缀，带有集群后缀（例如：”.cluster.local”）的请求会被发往 kube-dns，拥有存根域后缀的名称（例如：”.acme.local”）将会被发送到配置的私有 DNS 服务器\[“1.2.3.4”\]。最后，不满足任何这些后缀的请求将会被发送到上游 DNS \[“8.8.8.8”, “8.8.4.4”\] 里。
 
-![](../../.gitbook/assets/image%20%2846%29.png)
+![](../../.gitbook/assets/image%20%2847%29.png)
 
 ### 启动 kube-dns 示例 <a id="&#x542F;&#x52A8;-kube-dns-&#x793A;&#x4F8B;"></a>
 
@@ -95,7 +95,7 @@ kubectl apply -f https://kubernetes.feisky.xyz/manifests/kubedns/coredns.yaml
   * dnsmasq 的 upstream 为 SkyDNS，即集群内部的 DNS 解析由 SkyDNS 负责
 * sidecar：负责健康检查和提供 DNS metrics（监听在 10054 端口）
 
-![](../../.gitbook/assets/image%20%2850%29.png)
+![](../../.gitbook/assets/image%20%2851%29.png)
 
 #### 源码简介 <a id="&#x6E90;&#x7801;&#x7B80;&#x4ECB;"></a>
 

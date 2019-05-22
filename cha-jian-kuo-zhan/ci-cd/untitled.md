@@ -6,11 +6,11 @@
 
 ### 架构
 
-![](../../.gitbook/assets/image%20%2845%29.png)
+![](../../.gitbook/assets/image%20%2846%29.png)
 
 ### 流程 <a id="&#x914D;&#x7F6E;github"></a>
 
-![](../../.gitbook/assets/image%20%28108%29.png)
+![](../../.gitbook/assets/image%20%28109%29.png)
 
 ### 配置GitHub <a id="&#x914D;&#x7F6E;github"></a>
 
@@ -20,7 +20,7 @@
 
 访问[此頁面](https://github.com/settings/applications/new)，创建新的OAuth应用
 
-![](../../.gitbook/assets/image%20%289%29.png)
+![](../../.gitbook/assets/image%20%2810%29.png)
 
 填写应用程序的地址，因为是在本地与行，所以我们都填`http://localhost`。
 
@@ -28,7 +28,7 @@
 
 在注册完成后就可以获得如下图所示的OAuth Client ID和Client Secret，保存下来，我们后面要用到
 
-![](../../.gitbook/assets/image%20%28129%29.png)
+![](../../.gitbook/assets/image%20%28130%29.png)
 
 ### 使用docker-compose单机运行 <a id="&#x4F7F;&#x7528;docker-compose&#x5355;&#x673A;&#x8FD0;&#x884C;"></a>
 
@@ -87,13 +87,13 @@ docker-compose up
 
 访问 `http://localhost` 可以看到登陆画面
 
-![](../../.gitbook/assets/image%20%2885%29.png)
+![](../../.gitbook/assets/image%20%2886%29.png)
 
 授权后可以看到GitHub repo设置
 
-![](../../.gitbook/assets/image%20%28101%29.png)
+![](../../.gitbook/assets/image%20%28102%29.png)
 
-![](../../.gitbook/assets/image%20%2871%29.png)
+![](../../.gitbook/assets/image%20%2872%29.png)
 
 ### 参考 <a id="&#x53C2;&#x8003;"></a>
 

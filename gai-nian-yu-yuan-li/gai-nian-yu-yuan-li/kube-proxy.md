@@ -19,11 +19,11 @@ kube-proxy 当前支持以下几种实现
 
  kube-proxy默认方式。所有转发都是通过Iptables内核模块实现，而kube-proxy只负责生成相应的Iptables规则。 
 
-![](../../.gitbook/assets/image%20%28114%29.png)
+![](../../.gitbook/assets/image%20%28115%29.png)
 
 \(图片来自[cilium/k8s-iptables-diagram](https://github.com/cilium/k8s-iptables-diagram)\)
 
-![](../../.gitbook/assets/image%20%2816%29.png)
+![](../../.gitbook/assets/image%20%2817%29.png)
 
  使用Userspace模式（k8s版本为1.2之前默认模式），外部网络可以直接访问cluster IP。   
 使用Iptables模式（k8s版本为1.2之后默认模式），外部网络不能直接访问cluster IP。
@@ -112,7 +112,7 @@ kube-proxy --kubeconfig=/var/lib/kube-proxy/kubeconfig.conf
 
 kube-proxy 监听 API server 中 service 和 endpoint 的变化情况，并通过 userspace、iptables、ipvs 或 winuserspace 等 proxier 来为服务配置负载均衡（仅支持 TCP 和 UDP）。
 
-![](../../.gitbook/assets/image%20%28132%29.png)
+![](../../.gitbook/assets/image%20%28133%29.png)
 
 ![](https://kubernetes.feisky.xyz/zh/components/images/kube-proxy.png)
 

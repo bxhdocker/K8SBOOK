@@ -2,7 +2,7 @@
 
 
 
-![service&#x7684;&#x5173;&#x7CFB;](../../.gitbook/assets/image.png)
+![service&#x7684;&#x5173;&#x7CFB;](../../.gitbook/assets/image%20%281%29.png)
 
   service的cluster-ip是k8s系统中的虚拟ip地址，只能在内部访问。  
  如果需要在外部访问的话，可以通过NodePort或者LoadBalancer的方式
@@ -39,13 +39,13 @@ ExternalName：将服务通过 DNS CNAME 记录方式转发到指定的域名（
 
 当前iptables代理方式
 
-![](../../.gitbook/assets/image%20%28128%29.png)
+![](../../.gitbook/assets/image%20%28129%29.png)
 
 client请求serviceip后会直接转发到pod上。这种模式性能会高很多。kube-proxy就会负责将pod地址生成在node节点iptables规则中。
 
 ipvs代理方式
 
-![](../../.gitbook/assets/image%20%2818%29.png)
+![](../../.gitbook/assets/image%20%2819%29.png)
 
 ### 这种方式是通过内核模块ipvs实现转发，这种效率更高。
 
@@ -234,7 +234,7 @@ _这意味着需要有顺序的要求_ —— `Pod` 想要访问的任何 `Servi
 
 Kubernetes 也支持对端口名称的 DNS SRV（Service）记录。 如果名称为 `"my-service.my-ns"` 的 `Service` 有一个名为 `"http"` 的 `TCP` 端口，可以对 `"_http._tcp.my-service.my-ns"` 执行 DNS SRV 查询，得到 `"http"` 的端口号。
 
-![](../../.gitbook/assets/image%20%2828%29.png)
+![](../../.gitbook/assets/image%20%2829%29.png)
 
 kube-dns用于记录集群svc的域名解析相关记录，dnsmasq主要用于dns缓存
 

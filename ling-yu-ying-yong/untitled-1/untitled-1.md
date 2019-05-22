@@ -36,7 +36,7 @@ Istio装好后，如果想sidecar在应用启动时自动注入到pod中，还�
   kubectl get namespace -L istio-injection
   ```
 
-![](../../.gitbook/assets/image%20%2848%29.png)
+![](../../.gitbook/assets/image%20%2849%29.png)
 
 ## Bookinfo 应用 <a id="title"></a>
 
@@ -57,7 +57,7 @@ Bookinfo 应用分为四个单独的微服务：
 
 下图展示了这个应用的端到端架构
 
-![](../../.gitbook/assets/image%20%28119%29.png)
+![](../../.gitbook/assets/image%20%28120%29.png)
 
 Istio 注入之前的 Bookinfo 应用
 

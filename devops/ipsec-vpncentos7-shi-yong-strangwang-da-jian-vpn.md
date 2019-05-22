@@ -16,7 +16,7 @@ IPsec 是 [虚拟私密网络（VPN）](https://zh.opensuse.org/SDB:VPN_%E9%85%8
 
 网络图示：
 
-![](../.gitbook/assets/image%20%2896%29.png)
+![](../.gitbook/assets/image%20%2897%29.png)
 
 ## 介绍：
 
@@ -157,7 +157,7 @@ iptables -A FORWARD -s 192.168.0.0/21 -j ACCEPT     #同上
 
 把去往10.125.0.0/16段路由代理到192.168.1.228
 
-![](../.gitbook/assets/image%20%2817%29.png)
+![](../.gitbook/assets/image%20%2818%29.png)
 
 ![](http://doc.maizuo.com/api/file/getImage?fileId=5c10c046915399000d0001aa)
 

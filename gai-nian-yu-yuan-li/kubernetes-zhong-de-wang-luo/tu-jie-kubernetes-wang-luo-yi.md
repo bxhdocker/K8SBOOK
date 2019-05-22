@@ -4,7 +4,7 @@
   
 你一直在Kubernetes集群中运行一系列服务并已从中获益，或者你正打算这么做。尽管有一系列工具能帮助你建立并管理集群，你仍困惑于集群底层是如何工作的，以及出现问题该如何处理。我曾经就是这样的。
 
-![](../../.gitbook/assets/image%20%2841%29.png)
+![](../../.gitbook/assets/image%20%2842%29.png)
 
   
 诚然Kubernetes对初学者来说已足够易用，但我们仍然不得不承认，它的底层实现异常复杂。Kubernetes由许多部件组成，如果你想对失败场景做好应对准备，那么你必须知道各部件是如何协调工作的。其中一个最复杂，甚至可以说是最关键的部件就是网络。  
@@ -27,20 +27,20 @@
 
 第一步是确保同一节点上的Pod可以相互通信，然后可以扩展到跨节点通信、internet上的通信，等等。
 
-![Kubernetes Node&#xFF08;root network namespace&#xFF09;](../../.gitbook/assets/image%20%28113%29.png)
+![Kubernetes Node&#xFF08;root network namespace&#xFF09;](../../.gitbook/assets/image%20%28114%29.png)
 
 在每个Kubernetes节点（本场景指的是Linux机器）上，都有一个根（root）命名空间（root是作为基准，而不是超级用户）--root netns。  
   
 最主要的网络接口 `eth0` 就是在这个root netns下。
 
-![Kubernetes Node&#xFF08;pod network namespace&#xFF09;](../../.gitbook/assets/image%20%28156%29.png)
+![Kubernetes Node&#xFF08;pod network namespace&#xFF09;](../../.gitbook/assets/image%20%28157%29.png)
 
   
 类似的，每个Pod都有其自身的netns，通过一个虚拟的以太网对连接到root netns。这基本上就是一个管道对，一端在root netns内，另一端在Pod的nens内。  
   
 我们把Pod端的网络接口叫 `eth0`，这样Pod就不需要知道底层主机，它认为它拥有自己的根网络设备。另一端命名成比如 `vethxxx`。你可以用`ifconfig` 或者 `ip a` 命令列出你的节点上的所有这些接口。
 
-![Kubernetes Node&#xFF08;linux network bridge&#xFF09;](../../.gitbook/assets/image%20%28138%29.png)
+![Kubernetes Node&#xFF08;linux network bridge&#xFF09;](../../.gitbook/assets/image%20%28139%29.png)
 
   
 节点上的所有Pod都会完成这个过程。这些Pod要相互通信，就要用到linux的以太网桥 `cbr0` 了。Docker使用了类似的网桥，称为`docker`。  
@@ -83,7 +83,7 @@ _Kubernetes Nodes with route table（cross node pod-to-pod communication）_
 5. 路由表有每个节点的CIDR块的路由设定，它把数据包路由到CIDR块包含`pod4`的IP的节点。
 6. 因此数据包到达了`node2`的主网络接口`eth0`。现在即使`pod4`不是`eth0`的IP，数据包也仍然能转发到`cbr0`，因为节点配置了IP forwarding enabled。节点的路由表寻找任意能匹配`pod4` IP的路由。它发现了 `cbr0` 是这个节点的CIDR块的目标地址。你可以用`route -n`命令列出该节点的路由表，它会显示`cbr0`的路由，类型如下：
 
-   ![](../../.gitbook/assets/image%20%2826%29.png)
+   ![](../../.gitbook/assets/image%20%2827%29.png)
 
 7. 网桥接收了数据包，发送ARP请求，发现目标IP属于`vethyyy`。
 8. 数据包跨过管道对到达`pod4`。
