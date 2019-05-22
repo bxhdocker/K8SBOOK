@@ -119,6 +119,17 @@ bootstrap.memory_lock: true  #启用内存锁
 network.host: 10.125.0.45
 ```
 
+注意：修改path.data和path.logs里面后的权限，属主要改为`elasticsearch用户`
+
+#### 修改jvm.options里内存大小
+
+使用6G内存
+
+```text
+-Xms6g
+-Xmx6g
+```
+
 #### 修改/etc/sysconfig/elasticsearch系统配置
 
 ```text
@@ -127,6 +138,16 @@ network.host: 10.125.0.45
 2	PID_DIR=/data1/elastic
 3	ES_STARTUP_SLEEP_TIME=5
 ```
+
+## 故障处理
+
+1[elasticsearch报错之 memory locking requested for elasticsearch process but memory is not locked](https://www.cnblogs.com/FengGeBlog/p/10266148.html)
+
+解决方案：[https://www.cnblogs.com/FengGeBlog/p/10266148.html](https://www.cnblogs.com/FengGeBlog/p/10266148.html)
+
+
+
+
 
 RPM还有一个系统配置文件（`/etc/sysconfig/elasticsearch`），允许您设置以下参数：
 
