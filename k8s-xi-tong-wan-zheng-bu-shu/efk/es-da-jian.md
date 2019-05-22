@@ -130,6 +130,8 @@ network.host: 10.125.0.45
 -Xmx6g
 ```
 
+#### 
+
 #### 修改/etc/sysconfig/elasticsearch系统配置
 
 ```text
@@ -137,6 +139,32 @@ network.host: 10.125.0.45
 1	ES_PATH_CONF=/etc/elasticsearch
 2	PID_DIR=/data1/elastic
 3	ES_STARTUP_SLEEP_TIME=5
+```
+
+修改/etc/security/limits.conf文件内容
+
+```text
+在最后增加以下内容
+elasticsearch soft memlock unlimited
+elasticsearch hard memlock unlimited
+```
+
+需要将elasticsearch替换为运行Elasticsearch程序的用户
+
+在/etc/systemd/system/elasticsearch.service.d目录下创建一个文件override.conf，并添加下列内容
+
+```text
+[Service]
+LimitMEMLOCK=infinity
+```
+
+详情我们可以参考：https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-system-settings.html\#systemd
+
+最后重新载入配置文件更新服务
+
+```text
+systemctl daemon-reload
+systemctl start elasticsearch.service
 ```
 
 ## 故障处理
@@ -147,7 +175,7 @@ network.host: 10.125.0.45
 
 
 
-
+## 补充默认设置
 
 RPM还有一个系统配置文件（`/etc/sysconfig/elasticsearch`），允许您设置以下参数：
 
