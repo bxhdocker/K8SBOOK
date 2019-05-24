@@ -10,6 +10,10 @@
 
 **缺点:**需要统一日志收集规则，目录和输出方式
 
+
+
+![](../../.gitbook/assets/image%20%2850%29.png)
+
 ## 官方简介：
 
 由于es占用资源过大，使用独立机器建立
@@ -198,11 +202,93 @@ kinaba       : 5601
 
 ## ES使用指南
 
+#### 从下面返加的JSON我们可以得到该节点的节点名，所属集群名，ES版本号，lucene版本号。
+
+![](https://img-blog.csdn.net/20170925082840683?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZGVsaWNpb3VzaW9u/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+#### 1.查看集群的健康状态。
+
+```text
+http://127.0.0.1:9200/_cat/health?v
+```
+
+URL中\_cat表示查看信息，health表明返回的信息为集群健康信息，?v表示返回的信息加上头信息，跟返回JSON信息加上?pretty同理，就是为了获得更直观的信息
+
+下面的信息包括：
+
+集群的状态（status）：red红表示集群不可用，有故障。yellow黄表示集群不可靠但可用，一般单节点时就是此状态。green正常状态，表示集群一切正常。
+
+节点数（node.total）：节点数，这里是2，表示该集群有两个节点。
+
+数据节点数（node.data）：存储数据的节点数，这里是2。数据节点在Elasticsearch概念介绍有。
+
+分片数（shards）：这是12，表示我们把数据分成多少块存储。
+
+主分片数（pri）：primary shards，这里是6，实际上是分片数的两倍，因为有一个副本，如果有两个副本，这里的数量应该是分片数的三倍，这个会跟后面的索引分片数对应起来，这里只是个总数。
+
+激活的分片百分比（active\_shards\_percent）：这里可以理解为加载的数据分片数，只有加载所有的分片数，集群才算正常启动，在启动的过程中，如果我们不断刷新这个页面，我们会发现这个百分比会不断加大。
+
+#### 2.查看集群的索引数。
+
+```text
+http://127.0.0.1:9200/_cat/indices?v
+```
+
+通过该连接返回了集群中的所有索引，其中.kibana是kibana连接后在es建的索引，school是我自己添加的。
+
+这些信息，包括
+
+索引健康（health），green为正常，yellow表示索引不可靠（单节点），red索引不可用。与集群健康状态一致。
+
+状态（status），表明索引是否打开。
+
+索引名称（index），这里有.kibana和school。
+
+uuid，索引内部随机分配的名称，表示唯一标识这个索引。
+
+主分片（pri），.kibana为1，school为5，加起来主分片数为6，这个就是集群的主分片数。
+
+文档数（docs.count），school在之前的演示添加了两条记录，所以这里的文档数为2。
+
+已删除文档数（docs.deleted），这里统计了被删除文档的数量。
+
+索引存储的总容量（store.size），这里school索引的总容量为6.4kb，是主分片总容量的两倍，因为存在一个副本。
+
+主分片的总容量（pri.store.size），这里school的主分片容量是7kb，是索引总容量的一半。
 
 
 
+#### 3.查看集群所在磁盘的分配状况
+
+```text
+http://127.0.0.1:9200/_cat/allocation?v
+```
+
+通过该连接返回了集群中的各节点所在磁盘的磁盘状况
+
+返回的信息包括：
+
+分片数（shards），集群中各节点的分片数相同，都是6，总数为12，所以集群的总分片数为12。
+
+索引所占空间（disk.indices），该节点中所有索引在该磁盘所点的空间。
+
+磁盘使用容量（disk.used），已经使用空间41.6gb
+
+磁盘可用容量（disk.avail），可用空间4.3gb
+
+磁盘总容量（disk.total），总共容量45.9gb
+
+磁盘便用率（disk.percent），磁盘使用率90%
 
 
+
+#### 4.查看集群的节点
+
+```text
+http://127.0.0.1:9200/_cat/nodes?v
+```
+
+通过该连接返回了集群中各节点的情况。这些信息中比较重要的是master列，带\*星号表明该节点是主节点。带-表明该节点是从节点。
 
 ## 补充默认设置
 
@@ -241,4 +327,10 @@ RPM将配置文件，日志和数据目录放置在基于RPM的系统的适当�
 * 了解如何[配置Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html)。
 * 配置[重要的Elasticsearch设置](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html)。
 * 配置[重要的系统设置](https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config.html)。
+
+## 文章参考：
+
+{% embed url="https://blog.csdn.net/genghaihua/article/details/81479619" %}
+
+社区文档：[https://elasticsearch.cn/article/6395](https://elasticsearch.cn/article/6395)
 

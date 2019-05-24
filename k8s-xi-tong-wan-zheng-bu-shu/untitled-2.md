@@ -103,7 +103,7 @@ pip install docker-compose -y
 
   在[GitHub](https://github.com/vmware/harbor/releases)上找到下载地址并下载，我这里下载的1.5.1版本，整个文件800多MB：
 
-![](../.gitbook/assets/image%20%2876%29.png)
+![](../.gitbook/assets/image%20%2878%29.png)
 
 ```text
 下载以v1.6.2为例 
@@ -116,7 +116,7 @@ wget https://storage.googleapis.com/harbor-releases/release-1.6.0/harbor-offline
 
 tar xvf harbor-offline-installer-v1.5.1.tgz
 
-![](../.gitbook/assets/image%20%2845%29.png)
+![](../.gitbook/assets/image%20%2846%29.png)
 
 其中：
 
@@ -138,11 +138,11 @@ vim harbor.cfg
 
 1. **hostname**：目标主机的主机名，用于访问UI和注册服务。不能使用localhost和127.0.0.1，因为harbor需要被外部客户端访问，我这里修改成了IP地址。
 
-![](../.gitbook/assets/image%20%2839%29.png)
+![](../.gitbook/assets/image%20%2840%29.png)
 
 2. **ui\_url\_protocol**：用于访问UI和令牌/通知服务的协议，默认为http，如果在Nginx上启用了SSL认证可以设置成https，我这里用的默认的http。
 
-![](../.gitbook/assets/image%20%2868%29.png)
+![](../.gitbook/assets/image%20%2870%29.png)
 
 3.电子邮件设置：Harbor需要这些参数才能向用户发送“密码重置”电子邮件，并且只有在需要该功能时才需要。还有，千万注意，在默认情况下SSL连接是没有启用-如果你的SMTP服务器需要SSL，但不支持STARTTLS，那么你应该通过设置启用SSL 
 
@@ -185,11 +185,11 @@ self\_registration：（on或off。默认为on）启用/禁用用户注册自己
 5. **max\_job\_workers**：作业服务中的最大复制worker数，这里默认写的50，考虑到我的服务器的性能，我这里修改成了5。  
 
 
-![](../.gitbook/assets/image%20%2848%29.png)
+![](../.gitbook/assets/image%20%2849%29.png)
 
 6. **customize\_crt**：设置为on，prepare脚本创建用于生成/验证注册表令牌的私钥和根证书。如果设置成off，密钥和根证书将由外部源提供，我设置的是on。
 
-![](../.gitbook/assets/image%20%2892%29.png)
+![](../.gitbook/assets/image%20%2894%29.png)
 
 7. **ssl\_cert**：SSL证书的位置，只有协议设置成https的时候，这个属性才会生效。
 
@@ -198,7 +198,7 @@ self\_registration：（on或off。默认为on）启用/禁用用户注册自己
 9. **secretkey\_path**：密码存放的路径，这里最好别修改，否则后面会报错，我修改成了【/data/admin/】。  
 
 
-![](../.gitbook/assets/image%20%28116%29.png)
+![](../.gitbook/assets/image%20%28119%29.png)
 
 10. **log\_rotate\_count**：日志文件保留的数量，达到最大值后会循环删除之前的日志。
 
@@ -242,7 +242,7 @@ registry:
 ./prepare
 ```
 
-![](../.gitbook/assets/image%20%2852%29.png)
+![](../.gitbook/assets/image%20%2854%29.png)
 
 #### **3.4、开始安装**
 
@@ -397,7 +397,7 @@ docker-compose up -d
 
 #### 3.5、打开页面访问：
 
-![](../.gitbook/assets/image%20%28138%29.png)
+![](../.gitbook/assets/image%20%28141%29.png)
 
 命令行登陆Harbor
 

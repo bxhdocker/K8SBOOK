@@ -17,7 +17,7 @@ NodePort模式除了使用cluster ip外，也将service的port映射到每个nod
 为每个节点暴露一个端口，通过nodeip + nodeport可以访问这个服务，同时服务依然会有cluster类型的ip+port。内部通过clusterip方式访问，外部通过nodeport方式访问。   
 
 
-![](../.gitbook/assets/image%20%2838%29.png)
+![](../.gitbook/assets/image%20%2839%29.png)
 
 ### loadbalance <a id="loadbalance"></a>
 

@@ -75,7 +75,7 @@ kubectl proxy --address='0.0.0.0' --port=8080 --accept-hosts='^*$' &
 
 然后打开 `http://<master-ip>:8080/api/v1/proxy/namespaces/kube-system/services/kibana-logging/app/kibana#`。在 Settings -&gt; Indices 页面创建一个 index，选中 Index contains time-based events，使用默认的 `logstash-*` pattern，点击 Create。
 
-![](../.gitbook/assets/image%20%2853%29.png)
+![](../.gitbook/assets/image%20%2855%29.png)
 
 ### Filebeat
 

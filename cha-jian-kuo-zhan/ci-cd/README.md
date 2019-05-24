@@ -4,7 +4,7 @@
 
 众所周知Kubernetes并不提供代码构建、发布和部署，所有的这些工作都是由CI/CD工作流完成的，最近TheNewStack又出了本小册子（117页）介绍了Kubernetes中CI/CD的现状。下载本书的PDF请访问：[https://thenewstack.io/ebooks/kubernetes/ci-cd-with-kubernetes/](https://thenewstack.io/ebooks/kubernetes/ci-cd-with-kubernetes/)
 
-![](../../.gitbook/assets/image%20%2871%29.png)
+![](../../.gitbook/assets/image%20%2873%29.png)
 
 
 
@@ -28,7 +28,7 @@ Kubernetes 生态中的 Devops 工具实践。
 
 * ​[Kompose](https://kubernetes.feisky.xyz/fu-wu-zhi-li/devops/kompose)​
 
-![](../../.gitbook/assets/image%20%2881%29.png)
+![](../../.gitbook/assets/image%20%2883%29.png)
 
 
 

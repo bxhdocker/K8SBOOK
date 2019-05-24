@@ -6,7 +6,7 @@
 
 **TL;DR** 关于Istio中的各个组件和一些关键信息请参考下面的mindmap。
 
-![](../../.gitbook/assets/image%20%2883%29.png)
+![](../../.gitbook/assets/image%20%2885%29.png)
 
 图片 - Istio的mindmap
 
