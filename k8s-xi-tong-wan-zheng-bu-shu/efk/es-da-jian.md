@@ -167,11 +167,40 @@ systemctl daemon-reload
 systemctl start elasticsearch.service
 ```
 
+查看elasticsearch的监听端口
+
+```text
+# netstat -tnlp |grep java
+tcp  0      0 :::9200     :::*     LISTEN      7407/java           
+tcp  0      0 :::9300     :::*     LISTEN      7407/java
+```
+
+curl命令发送请求来查看elasticsearch是否接收到了数据
+
+```text
+# curl http://localhost:9200/_search?pretty
+```
+
+```text
+ELK默认端口号
+elasticsearch：9200 9300
+logstash     : 9301
+kinaba       : 5601
+```
+
 ## 故障处理
 
 1[elasticsearch报错之 memory locking requested for elasticsearch process but memory is not locked](https://www.cnblogs.com/FengGeBlog/p/10266148.html)
 
 解决方案：[https://www.cnblogs.com/FengGeBlog/p/10266148.html](https://www.cnblogs.com/FengGeBlog/p/10266148.html)
+
+
+
+## ES使用指南
+
+
+
+
 
 
 
