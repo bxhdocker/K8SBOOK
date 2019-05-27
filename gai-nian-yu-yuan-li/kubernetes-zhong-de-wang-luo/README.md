@@ -128,7 +128,7 @@ kubectl apply -f http://docs.projectcalico.org/v2.1/getting-started/kubernetes/i
 * 开启 STP
 * 路由 10.244.0.0/16 到 OVS 隧道
 
-![](../../.gitbook/assets/image%20%28129%29.png)
+![](../../.gitbook/assets/image%20%28130%29.png)
 
 ### [OVN](https://github.com/feiskyer/kubernetes-handbook/blob/master/network/ovn-kubernetes.md)
 

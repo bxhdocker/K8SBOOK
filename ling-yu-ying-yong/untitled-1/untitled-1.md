@@ -57,7 +57,7 @@ Bookinfo 应用分为四个单独的微服务：
 
 下图展示了这个应用的端到端架构
 
-![](../../.gitbook/assets/image%20%28123%29.png)
+![](../../.gitbook/assets/image%20%28124%29.png)
 
 Istio 注入之前的 Bookinfo 应用
 

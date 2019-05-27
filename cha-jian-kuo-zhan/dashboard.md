@@ -48,7 +48,7 @@ curl -sSL -E ./kube.p12:password -k https://nodeIP:6443/api/v1/proxy/namespaces/
 
 从 v1.7.0 版本开始，Dashboard 支持以 kubeconfig 配置文件的方式登录。打开 Dashboard 页面会自动跳转到登录的界面，选择 Kubeconfig 方式，并选择本地的 kubeconfig 配置文件即可。
 
-![](../.gitbook/assets/image%20%28147%29.png)
+![](../.gitbook/assets/image%20%28148%29.png)
 
 ### 使用 Token 登录 <a id="shi-yong-token-deng-lu"></a>
 

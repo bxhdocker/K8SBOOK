@@ -39,7 +39,7 @@ ExternalName：将服务通过 DNS CNAME 记录方式转发到指定的域名（
 
 当前iptables代理方式
 
-![](../../.gitbook/assets/image%20%28132%29.png)
+![](../../.gitbook/assets/image%20%28133%29.png)
 
 client请求serviceip后会直接转发到pod上。这种模式性能会高很多。kube-proxy就会负责将pod地址生成在node节点iptables规则中。
 

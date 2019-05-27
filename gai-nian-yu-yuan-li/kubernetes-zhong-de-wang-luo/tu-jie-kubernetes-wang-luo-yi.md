@@ -27,20 +27,20 @@
 
 第一步是确保同一节点上的Pod可以相互通信，然后可以扩展到跨节点通信、internet上的通信，等等。
 
-![Kubernetes Node&#xFF08;root network namespace&#xFF09;](../../.gitbook/assets/image%20%28117%29.png)
+![Kubernetes Node&#xFF08;root network namespace&#xFF09;](../../.gitbook/assets/image%20%28118%29.png)
 
 在每个Kubernetes节点（本场景指的是Linux机器）上，都有一个根（root）命名空间（root是作为基准，而不是超级用户）--root netns。  
   
 最主要的网络接口 `eth0` 就是在这个root netns下。
 
-![Kubernetes Node&#xFF08;pod network namespace&#xFF09;](../../.gitbook/assets/image%20%28160%29.png)
+![Kubernetes Node&#xFF08;pod network namespace&#xFF09;](../../.gitbook/assets/image%20%28161%29.png)
 
   
 类似的，每个Pod都有其自身的netns，通过一个虚拟的以太网对连接到root netns。这基本上就是一个管道对，一端在root netns内，另一端在Pod的nens内。  
   
 我们把Pod端的网络接口叫 `eth0`，这样Pod就不需要知道底层主机，它认为它拥有自己的根网络设备。另一端命名成比如 `vethxxx`。你可以用`ifconfig` 或者 `ip a` 命令列出你的节点上的所有这些接口。
 
-![Kubernetes Node&#xFF08;linux network bridge&#xFF09;](../../.gitbook/assets/image%20%28142%29.png)
+![Kubernetes Node&#xFF08;linux network bridge&#xFF09;](../../.gitbook/assets/image%20%28143%29.png)
 
   
 节点上的所有Pod都会完成这个过程。这些Pod要相互通信，就要用到linux的以太网桥 `cbr0` 了。Docker使用了类似的网桥，称为`docker`。  

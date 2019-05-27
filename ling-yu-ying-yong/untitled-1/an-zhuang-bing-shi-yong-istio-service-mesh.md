@@ -210,7 +210,7 @@ $ kubectl delete -f install/kubernetes/istio.yaml
 
  对控制面各组件的作用作用及故障影响进行了汇总，结果如下：[链接](http://dockone.io/article/8506)
 
-![](../../.gitbook/assets/image%20%28153%29.png)
+![](../../.gitbook/assets/image%20%28154%29.png)
 
 
 

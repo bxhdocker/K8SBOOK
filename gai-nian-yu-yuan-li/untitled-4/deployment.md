@@ -6,7 +6,7 @@ Deployment 为 Pod 和 ReplicaSet 提供了一个声明式定义 \(declarative\)
 
 ### Deployment 结构示意 <a id="deployment-&#x7ED3;&#x6784;&#x793A;&#x610F;&#x56FE;"></a>
 
-![](../../.gitbook/assets/image%20%2872%29.png)
+![](../../.gitbook/assets/image%20%2873%29.png)
 
 图片 - kubernetes deployment cheatsheet
 

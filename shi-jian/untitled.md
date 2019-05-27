@@ -21,7 +21,7 @@ Kubernetes 从 1.5 开始，通过 `kops` 或者 `kube-up.sh` 部署的集群会
 
 如下图所示
 
-![](../.gitbook/assets/image%20%28126%29.png)
+![](../.gitbook/assets/image%20%28127%29.png)
 
 注意：以下步骤假设每台机器上 Kubelet 和 Docker 已配置并处于正常运行状态。
 

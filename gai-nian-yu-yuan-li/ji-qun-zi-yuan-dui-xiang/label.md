@@ -136,7 +136,7 @@ selector:
 
 如Service通过label selector将同一类型的pod作为一个服务expose出来
 
-![](../../.gitbook/assets/image%20%28100%29.png)
+![](../../.gitbook/assets/image%20%28101%29.png)
 
 图片 - label示意图
 

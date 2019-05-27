@@ -25,7 +25,7 @@ Ingress 使用开源的反向代理负载均衡器来实现对外暴漏服务，
 
   Ingress 则是定义规则，通过它定义某个域名的请求过来之后转发到集群中指定的 Service。它可以通过 Yaml 文件定义，可以给一个或多个 Service 定义一个或多个 Ingress 规则。
 
-![](../../.gitbook/assets/image%20%28102%29.png)
+![](../../.gitbook/assets/image%20%28103%29.png)
 
 以上三者有机的协调配合起来，就可以完成 Kubernetes 集群服务的暴漏
 
@@ -71,7 +71,7 @@ Nginx-ingress 是 Kubernetes 生态中的重要成员，主要负责向外暴露
 
  Nginx 的 7 层反向代理模式，可以简单用下图表示：
 
-![](../../.gitbook/assets/image%20%2863%29.png)
+![](../../.gitbook/assets/image%20%2864%29.png)
 
 nginx-ingress 工作流程分析
 

@@ -1,8 +1,8 @@
 # 核心组件
 
-![](../../.gitbook/assets/image%20%2875%29.png)
+![](../../.gitbook/assets/image%20%2876%29.png)
 
-![&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x539F;&#x7406;](../../.gitbook/assets/image%20%28150%29.png)
+![&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x539F;&#x7406;](../../.gitbook/assets/image%20%28151%29.png)
 
 Kubernetes主要由以下几个核心组件组成：
 
