@@ -157,7 +157,7 @@ CRI 基于 gRPC 定义了 RuntimeService 和 ImageService 等两个 gRPC 服务�
 
 Kubelet 作为 CRI 的客户端，而容器运行时则需要实现 CRI 的服务端（即 gRPC server，通常称为 CRI shim）。容器运行时在启动 gRPC server 时需要监听在本地的 Unix Socket （Windows 使用 tcp 格式）。
 
-![](../../../.gitbook/assets/image%20%28116%29.png)
+![](../../../.gitbook/assets/image%20%28118%29.png)
 
 目前基于 CRI 容器引擎已经比较丰富了，包括
 
@@ -208,11 +208,11 @@ Kubelet 作为 CRI 的客户端，而容器运行时则需要实现 CRI 的服�
 * 容器执行引擎，如 dockershim、rkt 等（注：rkt 暂未完成 CRI 的迁移）
 * 网络插件，目前支持 CNI 和 kubenet
 
-![](../../../.gitbook/assets/image%20%2865%29.png)
+![](../../../.gitbook/assets/image%20%2866%29.png)
 
 #### Pod 启动流程 <a id="pod-&#x542F;&#x52A8;&#x6D41;&#x7A0B;"></a>
 
-![](../../../.gitbook/assets/image%20%28155%29.png)
+![](../../../.gitbook/assets/image%20%28157%29.png)
 
 ![](https://kubernetes.feisky.xyz/zh/components/images/pod-start.png)
 

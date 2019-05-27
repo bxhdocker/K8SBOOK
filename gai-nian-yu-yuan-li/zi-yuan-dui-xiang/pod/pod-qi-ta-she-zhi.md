@@ -387,7 +387,7 @@ k8s ---> docker ---> linux cgroup
 
 总结一下，说明4个参数在k8s里面的使用：
 
-![](../../../.gitbook/assets/image%20%2888%29.png)
+![](../../../.gitbook/assets/image%20%2890%29.png)
 
 Kubernetes 通过 cgroups 限制容器的 CPU 和内存等计算资源，包括 requests（请求，**调度器保证调度到资源充足的 Node 上，如果无法满足会调度失败**）和 limits（上限）等：
 

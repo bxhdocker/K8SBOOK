@@ -19,7 +19,7 @@ Bookinfo 应用分为四个单独的微服务：
 
 下图展示了这个应用的端到端架构
 
-![](../../.gitbook/assets/image%20%2870%29.png)
+![](../../.gitbook/assets/image%20%2871%29.png)
 
 Istio 注入之前的 Bookinfo 应用
 
@@ -29,7 +29,7 @@ Bookinfo 是一个异构应用，几个微服务是由不同的语言编写的�
 
 要在 Istio 中运行这一应用，无需对应用自身做出任何改变。我们只要简单的在 Istio 环境中对服务进行配置和运行，具体一点说就是把 Envoy sidecar 注入到每个服务之中。这个过程所需的具体命令和配置方法由运行时环境决定，而部署结果较为一致，如下图所示
 
-![Bookinfo &#x5E94;&#x7528;](../../.gitbook/assets/image%20%2896%29.png)
+![Bookinfo &#x5E94;&#x7528;](../../.gitbook/assets/image%20%2898%29.png)
 
 所有的微服务都和 Envoy sidecar 集成在一起，被集成服务所有的出入流量都被 sidecar 所劫持，这样就为外部控制准备了所需的 Hook，然后就可以利用 Istio 控制平面为应用提供服务路由、遥测数据收集以及策略实施等功能。
 

@@ -16,7 +16,7 @@ IPsec 是 [虚拟私密网络（VPN）](https://zh.opensuse.org/SDB:VPN_%E9%85%8
 
 网络图示：
 
-![](../.gitbook/assets/image%20%28100%29.png)
+![](../.gitbook/assets/image%20%28102%29.png)
 
 ## 介绍：
 

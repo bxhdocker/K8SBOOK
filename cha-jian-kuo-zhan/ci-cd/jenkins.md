@@ -6,7 +6,7 @@
 
 我们基于Jenkins的CI/CD流程如下所示
 
-![](../../.gitbook/assets/image%20%2897%29.png)
+![](../../.gitbook/assets/image%20%2899%29.png)
 
 图片 - 基于Jenkins的持续集成与发布
 

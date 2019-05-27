@@ -103,7 +103,7 @@ pip install docker-compose -y
 
   在[GitHub](https://github.com/vmware/harbor/releases)上找到下载地址并下载，我这里下载的1.5.1版本，整个文件800多MB：
 
-![](../.gitbook/assets/image%20%2879%29.png)
+![](../.gitbook/assets/image%20%2880%29.png)
 
 ```text
 下载以v1.6.2为例 
@@ -142,7 +142,7 @@ vim harbor.cfg
 
 2. **ui\_url\_protocol**：用于访问UI和令牌/通知服务的协议，默认为http，如果在Nginx上启用了SSL认证可以设置成https，我这里用的默认的http。
 
-![](../.gitbook/assets/image%20%2871%29.png)
+![](../.gitbook/assets/image%20%2872%29.png)
 
 3.电子邮件设置：Harbor需要这些参数才能向用户发送“密码重置”电子邮件，并且只有在需要该功能时才需要。还有，千万注意，在默认情况下SSL连接是没有启用-如果你的SMTP服务器需要SSL，但不支持STARTTLS，那么你应该通过设置启用SSL 
 
@@ -189,7 +189,7 @@ self\_registration：（on或off。默认为on）启用/禁用用户注册自己
 
 6. **customize\_crt**：设置为on，prepare脚本创建用于生成/验证注册表令牌的私钥和根证书。如果设置成off，密钥和根证书将由外部源提供，我设置的是on。
 
-![](../.gitbook/assets/image%20%2895%29.png)
+![](../.gitbook/assets/image%20%2897%29.png)
 
 7. **ssl\_cert**：SSL证书的位置，只有协议设置成https的时候，这个属性才会生效。
 
@@ -198,7 +198,7 @@ self\_registration：（on或off。默认为on）启用/禁用用户注册自己
 9. **secretkey\_path**：密码存放的路径，这里最好别修改，否则后面会报错，我修改成了【/data/admin/】。  
 
 
-![](../.gitbook/assets/image%20%28120%29.png)
+![](../.gitbook/assets/image%20%28122%29.png)
 
 10. **log\_rotate\_count**：日志文件保留的数量，达到最大值后会循环删除之前的日志。
 
@@ -397,7 +397,7 @@ docker-compose up -d
 
 #### 3.5、打开页面访问：
 
-![](../.gitbook/assets/image%20%28142%29.png)
+![](../.gitbook/assets/image%20%28144%29.png)
 
 命令行登陆Harbor
 

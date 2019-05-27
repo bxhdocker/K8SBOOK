@@ -33,7 +33,7 @@ spec:
     name: busybox
 ```
 
-![](../../.gitbook/assets/image%20%2877%29.png)
+![](../../.gitbook/assets/image%20%2878%29.png)
 
 ### 支持配置私有 DNS 服务器和上游 DNS 服务器 <a id="&#x652F;&#x6301;&#x914D;&#x7F6E;&#x79C1;&#x6709;-dns-&#x670D;&#x52A1;&#x5668;&#x548C;&#x4E0A;&#x6E38;-dns-&#x670D;&#x52A1;&#x5668;"></a>
 

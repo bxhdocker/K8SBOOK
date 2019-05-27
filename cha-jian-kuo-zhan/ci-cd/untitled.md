@@ -10,7 +10,7 @@
 
 ### 流程 <a id="&#x914D;&#x7F6E;github"></a>
 
-![](../../.gitbook/assets/image%20%28112%29.png)
+![](../../.gitbook/assets/image%20%28114%29.png)
 
 ### 配置GitHub <a id="&#x914D;&#x7F6E;github"></a>
 
@@ -28,7 +28,7 @@
 
 在注册完成后就可以获得如下图所示的OAuth Client ID和Client Secret，保存下来，我们后面要用到
 
-![](../../.gitbook/assets/image%20%28134%29.png)
+![](../../.gitbook/assets/image%20%28136%29.png)
 
 ### 使用docker-compose单机运行 <a id="&#x4F7F;&#x7528;docker-compose&#x5355;&#x673A;&#x8FD0;&#x884C;"></a>
 
@@ -87,13 +87,13 @@ docker-compose up
 
 访问 `http://localhost` 可以看到登陆画面
 
-![](../../.gitbook/assets/image%20%2889%29.png)
+![](../../.gitbook/assets/image%20%2891%29.png)
 
 授权后可以看到GitHub repo设置
 
-![](../../.gitbook/assets/image%20%28105%29.png)
+![](../../.gitbook/assets/image%20%28107%29.png)
 
-![](../../.gitbook/assets/image%20%2875%29.png)
+![](../../.gitbook/assets/image%20%2876%29.png)
 
 ### 参考 <a id="&#x53C2;&#x8003;"></a>
 
